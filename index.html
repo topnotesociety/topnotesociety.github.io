@@ -3,7 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Fluent in Scent: Citrus practice</title>
+<title>Fluent in Scent: a perfume school at home</title>
+<meta name="description" content="A free perfumery course you can do at home. Learn to smell and to name what you smell, starting with five citrus oils.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://topnotesociety.github.io/">
+<meta property="og:title" content="Fluent in Scent: a perfume school at home">
+<meta property="og:description" content="A free perfumery course you can do at home. Learn to smell and to name what you smell, starting with five citrus oils.">
+<meta property="og:image" content="https://topnotesociety.github.io/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍋%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
@@ -194,6 +203,38 @@ footer p{font-size:.9rem; color:var(--label)}
 .course .name{font-size:1.15rem}
 .course .what{grid-column:2; color:var(--label); font-size:.95rem}
 .course .here{font-family:var(--sans); font-weight:400; font-size:.72rem; background:var(--ink); color:var(--page); border-radius:999px; padding:3px 10px; margin-left:8px; vertical-align:middle; white-space:nowrap}
+.modes{display:grid; gap:10px; margin-top:8px}
+.mode{display:block; text-align:left; background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:16px; width:100%}
+.mode:hover{border-color:var(--rule)}
+.mode b{display:block; font-weight:500; font-size:1.15rem}
+.mode span{color:var(--label); font-size:.95rem}
+.kw{font-family:var(--sans); font-weight:300; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--label)}
+.match{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.match .col{display:grid; gap:10px; align-content:start}
+.opt.sel{border-color:var(--ink); box-shadow:inset 0 0 0 1px var(--ink)}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:3px; padding:26px 22px 22px; margin:34px 0 12px; text-align:center}
+.card .strips{height:122px; margin:0 auto 14px; padding-left:0; justify-content:center; width:max-content}
+.card .strip{width:20px; height:112px; animation:none}
+.card h2{font-weight:400; font-size:1.6rem; line-height:1.2; margin:6px 0 8px}
+.card .facts{font-family:var(--sans); font-weight:300; font-size:.85rem; color:var(--label); margin:0 0 14px}
+.card .sig{font-family:var(--sans); font-weight:300; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--label); margin:0}
+.signup{background:var(--accent); border-radius:3px; padding:20px 18px; margin-top:34px}
+.signup h2{margin-bottom:6px}
+.signup p{color:var(--label); font-size:.95rem}
+.who{display:flex; align-items:center; gap:14px; margin-top:34px; text-decoration:none}
+.who svg{width:56px; height:56px; flex:none; border-radius:50%; background:var(--accent)}
+.who span{font-size:1.05rem; text-decoration:underline; text-underline-offset:4px}
+.portrait{display:block; width:150px; height:150px; border-radius:50%; background:var(--accent); margin:6px 0 22px}
+.fig-coat{fill:var(--paper); stroke:var(--rule)}
+.fig-line{fill:none; stroke:var(--rule)}
+.fig-skin{fill:var(--line); stroke:var(--rule)}
+.sheet h2{margin:28px 0 8px}
+table.scale{border-collapse:collapse; width:100%; font-size:.9rem}
+table.scale th,table.scale td{border-bottom:1px solid var(--line); padding:7px 4px; text-align:center}
+table.scale th{font-family:var(--sans); font-weight:300; font-size:.72rem; color:var(--label)}
+table.scale th:first-child,table.scale td:first-child{text-align:left}
+footer .links{display:flex; flex-wrap:wrap; gap:6px 18px}
+@media print{.brand,.back,footer,.row,.no-print{display:none !important} body{background:#fff} .wrap{padding:0}}
 </style>
 </head>
 <body>
@@ -235,17 +276,17 @@ var WORDS=[
 ];
 
 var PAIRS=[
-  {a:"lemon",b:"lime",how:"Smell lemon, then lime, then lemon again.",q:[
+  {a:"lemon",b:"lime",diff:"Lime should feel greener, colder and sharper than lemon.",words:"Zesty · Green · Tart",how:"Smell lemon, then lime, then lemon again.",q:[
     {t:"Greener, colder and sharper",ans:"lime",note:"Next to lemon, lime feels greener, colder and sharper, with a slight bitterness."},
     {t:"Bright, juicy, transparent: the “yellow” of citrus",ans:"lemon",note:"Lemon is the transparent one. Perfumers use it in the top notes of colognes."},
     {t:"A classic part of cola flavourings",ans:"lime",note:"Lime oil sits in cola next to cinnamon and vanilla."}
   ]},
-  {a:"bergamot",b:"orange",how:"Smell bergamot, then sweet orange, then bergamot again.",q:[
+  {a:"bergamot",b:"orange",diff:"Bergamot is “citrus wearing perfume”: floral and slightly bitter. Orange is round and sweet.",words:"Floral · Bitter · Round · Juicy",how:"Smell bergamot, then sweet orange, then bergamot again.",q:[
     {t:"“Citrus wearing perfume”: floral and softly bitter",ans:"bergamot",note:"Bergamot leans floral and tea-like. It is the backbone of colognes and chypres."},
     {t:"Round, sweet, juicy, almost sugary",ans:"orange",note:"Sweet orange has no sharp edges and very little bitterness."},
     {t:"The scent in a cup of Earl Grey",ans:"bergamot",note:"Earl Grey is black tea scented with bergamot oil. Brew one and smell it next to the strip."}
   ]},
-  {a:"grapefruit",b:"lemon",how:"Smell grapefruit, then lemon, then grapefruit again.",q:[
+  {a:"grapefruit",b:"lemon",diff:"Both are sharp, but grapefruit has a sulphurous, almost sweaty edge.",words:"Sulphurous · Pithy · Sparkling",how:"Smell grapefruit, then lemon, then grapefruit again.",q:[
     {t:"A sulphurous, almost sweaty edge",ans:"grapefruit",note:"Both are sharp, but only grapefruit has that sulphurous edge."},
     {t:"Clear and juicy, without the bitter pith",ans:"lemon",note:"Next to grapefruit, lemon stays light and transparent. Pithy and bitter are grapefruit words."},
     {t:"Its character comes from nootkatone, a close cousin of the molecules in vetiver",ans:"grapefruit",note:"That is why grapefruit and vetiver sit so well together in a perfume."}
@@ -264,6 +305,8 @@ var REVIEWS=[
 ];
 
 var WORKBOOK_URL="https://top-note-society.kit.com/35f4e9b2e7";
+var INSTAGRAM_URL="https://www.instagram.com/topnotesociety/";
+var SITE_URL="https://topnotesociety.github.io/";
 
 /* ---------- storage: saved on this device, safe if unavailable ---------- */
 var mem={};
@@ -278,7 +321,7 @@ var store={
   },
   clear:function(){
     mem={};
-    ["own","pairs","words","scale","blind","review"].forEach(function(k){
+    ["own","pairs","pairsmell","words","scale","blind","translate","review"].forEach(function(k){
       try{localStorage.removeItem("fis1:"+k);}catch(e){}
     });
   }
@@ -311,10 +354,55 @@ function head(step,title,intro){
 }
 
 /* ---------- start page ---------- */
-function statusPairs(){var b=store.get("pairs",null);return b?("Best: "+b.best+" of "+QUESTIONS.length):"Not started";}
+function statusPairs(){
+  var b=store.get("pairs",null), sm=store.get("pairsmell",null), out=[];
+  if(sm) out.push("By smell: "+sm.best+" of "+PAIRS.length);
+  if(b) out.push("By words: "+b.best+" of "+QUESTIONS.length);
+  return out.length?out.join(", "):"Not started";
+}
+function statusTranslate(){return store.get("translate",null)?"All three matched":"Not started";}
+function stepsDone(){
+  var n=0, sc=store.get("scale",null);
+  if(ownCount(getOwn())===5) n++;
+  if(store.get("pairs",null)||store.get("pairsmell",null)) n++;
+  if(countScale(sc)===30||(sc&&sc.previous)) n++;
+  if(store.get("words",null)) n++;
+  if(store.get("blind",[]).length) n++;
+  if(store.get("translate",null)) n++;
+  return n;
+}
+function stripsHtml(tag){
+  var rs=[-14,-7,0,7,14];
+  return OILS.map(function(o,i){
+    return tag==="a"?'<a class="strip" href="#own" aria-label="Write your own words for '+o.name+'" style="--r:'+rs[i]+'deg;--tint:'+o.tint+'"><span>'+o.name+'</span></a>':
+      '<span class="strip" style="--r:'+rs[i]+'deg;--tint:'+o.tint+'"></span>';
+  }).join("");
+}
+function doneCard(){
+  var bl=store.get("blind",[]), facts=["5 oils","14 words","3 pairs"];
+  if(bl.length) facts.push("blind test "+bl[bl.length-1].right+" of 5");
+  return '<div class="card"><div class="strips" aria-hidden="true">'+stripsHtml("span")+'</div>'+
+    '<p class="tag">Fluent in Scent</p><h2>Module 1: Citrus, complete</h2>'+
+    '<p class="facts">'+facts.join(" · ")+'</p>'+
+    '<p class="sig">A perfume school at home<br>@topnotesociety</p></div>'+
+    '<p class="quiet">Take a screenshot of this card and tag @topnotesociety, or send the course to a friend.</p>'+
+    '<div class="row" style="margin-top:8px"><button class="btn" data-act="share">Share the course</button></div>';
+}
+function figure(cls){
+  return '<svg class="'+cls+'" viewBox="0 0 120 120" role="img" aria-label="A figure in a white lab coat, with no face">'+
+    '<path class="fig-skin" stroke-width="1.5" d="M52 60 L52 78 L60 88 L68 78 L68 60 Z"/>'+
+    '<path class="fig-coat" stroke-width="1.5" d="M14 122 C14 94 32 80 50 75 L60 88 L70 75 C88 80 106 94 106 122 Z"/>'+
+    '<path class="fig-line" stroke-width="1.5" d="M50 75 L43 98 L60 88 L77 98 L70 75"/>'+
+    '<path class="fig-line" stroke-width="1.5" d="M60 88 L60 122"/>'+
+    '<rect class="fig-coat" stroke-width="1.2" x="80" y="88" width="4.5" height="22" rx="1"/>'+
+    '<rect class="fig-coat" stroke-width="1.2" x="86" y="91" width="4.5" height="20" rx="1" transform="rotate(9 88 110)"/>'+
+    '<rect class="fig-coat" stroke-width="1.5" x="75" y="103" width="18" height="16"/>'+
+    '<ellipse class="fig-skin" stroke-width="1.5" cx="60" cy="43" rx="17" ry="21"/>'+
+    '</svg>';
+}
 function statusWords(){var b=store.get("words",null);return b?("Best: "+b.best+" of "+WORDS.length+" on the first try"):"Not started";}
 function countScale(s){var n=0;if(!s||!s.current)return 0;OILS.forEach(function(o){AXES.forEach(function(a){if(s.current.v[o.id]&&s.current.v[o.id][a])n++;});});return n;}
-function statusScale(){var n=countScale(store.get("scale",null));return n?(n+" of 30 rated"):"Not started";}
+function statusScale(){var sc=store.get("scale",null),n=countScale(sc);return n?(n+" of 30 rated"):(sc&&sc.previous?"New scale started":"Not started");}
 function statusBlind(){var h=store.get("blind",[]);if(!h.length)return "Not started";var l=h[h.length-1];return "Last test: "+l.right+" of 5 ("+nice(fromIso(l.date))+")";}
 function statusReview(){
   var r=store.get("review",null); if(!r||!r.start) return "No dates yet";
@@ -326,16 +414,14 @@ function statusReview(){
   return "Next review: "+nice(d)+" ("+relative(n)+")";
 }
 function viewStart(){
-  var rs=[-14,-7,0,7,14];
-  var strips=OILS.map(function(o,i){
-    return '<a class="strip" href="#own" aria-label="Write your own words for '+o.name+'" style="--r:'+rs[i]+'deg;--tint:'+o.tint+'"><span>'+o.name+'</span></a>';
-  }).join("");
+  var strips=stripsHtml("a"), done=stepsDone();
   var items=[
     ["own","Step 1","Your own words first","Write what each oil reminds you of. No wrong answers.",statusOwn()],
     ["pairs","Step 3","Minimal pairs","Two neighbours side by side. Which one is it?",statusPairs()],
     ["scale","Step 4","Intensity scale","Rate each oil from 1 to 5 on six fixed axes.",statusScale()],
     ["words","Step 5","Word bank","Fourteen words. Match each one to its meaning.",statusWords()],
     ["blind","Step 6","Blind test","Numbered strips, your guess, three words.",statusBlind()],
+    ["translate","Step 7","Translation","One smell, said in other words. Match the pairs.",statusTranslate()],
     ["review","Step 8","Come back","Your four review dates, counted for you.",statusReview()]
   ];
   app.innerHTML=
@@ -345,10 +431,13 @@ function viewStart(){
     '<h1>Fluent in Scent</h1>'+
     '<p class="lead">A complete perfumery course, at home and at your own pace. Five stages take you from single materials to describing whole perfumes, with a real teaching method: small steps, your own words first, practice and regular review.</p>'+
     '<p>You are in Module 1: Citrus. Keep your five strips next to you: lemon, lime, bergamot, sweet orange, grapefruit.</p>'+
+    '<p class="progress" style="margin:26px 0 10px">'+done+' of 6 exercises done</p>'+
     '<ul class="list">'+items.map(function(x){
       return '<li><a href="#'+x[0]+'"><span class="step">'+x[1]+'</span><span class="name">'+x[2]+'</span>'+
         '<span class="what">'+x[3]+'</span><span class="status">'+x[4]+'</span></a></li>';
     }).join("")+'</ul>'+
+    (done===6?doneCard():'')+
+    '<p style="margin-top:22px"><a href="#notes">My scent notes</a> <span class="quiet">Everything you wrote and rated, on one page.</span></p>'+
     '<h2 style="margin-top:44px">The full course</h2>'+
     '<p class="quiet" style="margin:6px 0 14px">Five stages, mapped to language levels A1 to C1. Each module adds a few oils to your own library.</p>'+
     '<ol class="course">'+[
@@ -360,6 +449,10 @@ function viewStart(){
     ].map(function(x){
       return '<li><span class="lvl">'+x[0]+'</span><span class="name">'+x[1]+(x[3]?' <span class="here">'+x[3]+'</span>':'')+'</span><span class="what">'+x[2]+'</span></li>';
     }).join("")+'</ol>'+
+    '<div class="signup"><h2>Module 2 is on its way</h2>'+
+    '<p>Get the free Module 1 workbook by email, and hear first when the next module is ready.</p>'+
+    '<a class="btn" href="'+WORKBOOK_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Get it by email</a></div>'+
+    '<a class="who" href="#about">'+figure("")+'<span>Who made this course?</span></a>'+
     '<p class="quiet" style="margin-top:22px">Smell from paper, a few centimetres from the nose. Never put undiluted oil on skin.</p>';
 }
 
@@ -391,9 +484,40 @@ function viewOwn(){
 }
 
 /* ---------- step 3: minimal pairs ---------- */
-var P=null;
+var P=null, PM=null, S=null;
 function pairsNew(){P={i:0,score:0,picked:null,done:false};}
+function smellNew(){S={i:0,score:0,guess:null,right:null,done:false};}
+function viewSmell(){
+  if(!S) smellNew();
+  var top=head("Step 3","Minimal pairs");
+  if(S.done){
+    app.innerHTML=top+'<p class="big">'+S.score+' of '+PAIRS.length+' by smell</p>'+
+      '<p>'+(S.score===PAIRS.length?"Your nose tells every pair apart. Try again tomorrow: a fresh nose is a fair test.":"Smell the pair you missed once more, side by side, and say the difference out loud.")+'</p>'+
+      '<div class="row"><button class="btn" data-act="smell-again">Smell again</button><button class="btn ghost" data-act="pairs-mode" data-m="">Other mode</button></div>';
+    return;
+  }
+  var p=PAIRS[S.i], A=OIL[p.a], B=OIL[p.b], html=top+'<p class="progress">Pair '+(S.i+1)+' of '+PAIRS.length+' · '+A.name+' or '+B.name.toLowerCase()+'</p>';
+  if(!S.guess){
+    html+='<p>Take the two strips, close your eyes and shuffle them. Smell one, eyes still closed.</p>'+
+      '<p class="prompt">Which one is it?</p><div class="opts">'+
+      oilBtn(A,"",'data-act="smell-guess" data-id="'+A.id+'"')+oilBtn(B,"",'data-act="smell-guess" data-id="'+B.id+'"')+'</div>';
+  }else if(S.right===null){
+    html+='<p class="prompt">You said '+OIL[S.guess].name.toLowerCase()+'. Now read the name on the strip.</p>'+
+      '<div class="yn"><button data-act="smell-mark" data-v="1" aria-pressed="false">I was right</button><button data-act="smell-mark" data-v="0" aria-pressed="false">I was wrong</button></div>';
+  }else{
+    html+='<div class="note"><p class="verdict '+(S.right?"ok":"no")+'">'+(S.right?"Right.":"Not yet. Smell both again, slowly.")+'</p><p>'+p.diff+'</p><p class="kw">'+p.words+'</p></div>'+
+      '<div class="row"><button class="btn" data-act="smell-next">'+(S.i===PAIRS.length-1?"See the result":"Next pair")+'</button></div>';
+  }
+  app.innerHTML=html;
+}
 function viewPairs(){
+  if(PM==="smell"){viewSmell();return;}
+  if(PM!=="words"){
+    app.innerHTML=head("Step 3","Minimal pairs","Two neighbours side by side. The difference between them is where the word lives.")+
+      '<div class="modes"><button class="mode" data-act="pairs-mode" data-m="smell"><b>By smell</b><span>With your strips, eyes closed. Three pairs.</span></button>'+
+      '<button class="mode" data-act="pairs-mode" data-m="words"><b>By words</b><span>No strips needed. Nine short questions.</span></button></div>';
+    return;
+  }
   if(!P) pairsNew();
   if(P.done){
     app.innerHTML=head("Step 3","Minimal pairs")+
@@ -574,12 +698,113 @@ function viewReview(){
         '<span class="todo">'+x.todo+' <a href="#'+x.go+'">Open</a></span>'+
         '<label><input type="checkbox" data-act="review-done" data-n="'+x.n+'" '+(done?"checked":"")+'> Done</label></li>';
     }).join("")+'</ul>'+
+    '<div class="row"><button class="btn ghost" data-act="review-cal">Add the dates to my calendar</button></div>'+
     '<div class="row"><button class="link" data-act="review-reset">Change the start date</button></div>';
+}
+
+/* ---------- step 7: translation ---------- */
+var TR=[
+  {a:"Bergamot",b:"Earl Grey tea",note:"A cup of Earl Grey is black tea scented with bergamot oil. Brew one and smell it next to the strip."},
+  {a:"Lime",b:"Cola",note:"Lime oil is a classic part of cola flavourings, next to cinnamon and vanilla."},
+  {a:"Grapefruit",b:"Vetiver",note:"Grapefruit owes its character to nootkatone, a close cousin of the molecules that give vetiver its smell."}
+];
+var T=null;
+function transNew(){T={order:shuffle([0,1,2]),sel:null,done:{},last:null,miss:false};}
+function viewTranslate(){
+  if(!T) transNew();
+  var n=Object.keys(T.done).length;
+  var left=TR.map(function(x,i){
+    return '<button class="opt'+(T.done[i]?" right":(T.sel===i?" sel":""))+'" data-act="tr-a" data-i="'+i+'" '+(T.done[i]?"disabled":"")+'>'+x.a+'</button>';
+  }).join("");
+  var right=T.order.map(function(i){
+    return '<button class="opt'+(T.done[i]?" right":"")+'" data-act="tr-b" data-i="'+i+'" '+(T.done[i]?"disabled":"")+'>'+TR[i].b+'</button>';
+  }).join("");
+  var fb="";
+  if(T.miss) fb='<div class="note"><p class="verdict no">Not this pair. Try another.</p></div>';
+  else if(T.last!==null) fb='<div class="note"><p class="verdict ok">Right.</p><p>'+TR[T.last].note+'</p></div>';
+  app.innerHTML=head("Step 7","Translation","One smell, said in other words. Tap a citrus on the left, then its parallel on the right.")+
+    '<p class="progress">'+n+' of 3 matched</p>'+
+    '<div class="match"><div class="col">'+left+'</div><div class="col">'+right+'</div></div>'+fb+
+    (n===3?'<p style="margin-top:18px">Now find your own parallel for one citrus: a drink, a place, a colour. Share it in the comments under any @topnotesociety post. We read every one.</p>'+
+      '<div class="row"><button class="btn ghost" data-act="tr-again">Match again</button><a class="btn" href="#start" style="text-decoration:none;display:inline-flex;align-items:center">All exercises</a></div>':'');
+}
+
+/* ---------- my scent notes ---------- */
+function viewNotes(){
+  var o=getOwn(), sc0=store.get("scale",null), bl=store.get("blind",[]), w=store.get("words",null);
+  var sc=sc0&&countScale(sc0)?sc0.current:(sc0&&sc0.previous?sc0.previous:null);
+  var html=head("Module 1: Citrus","My scent notes","Everything you wrote and rated, on one page. It is saved on this device only.")+'<div class="sheet">';
+  html+='<h2>My own words</h2><dl class="words" id="notes-own"></dl>';
+  html+='<h2>My intensity scale</h2>'+(sc?'<table class="scale"><tr><th></th>'+AXES.map(function(a){return '<th>'+a+'</th>';}).join("")+'</tr>'+
+    OILS.map(function(x){return '<tr><td>'+x.name+'</td>'+AXES.map(function(a){return '<td>'+((sc.v[x.id]&&sc.v[x.id][a])||"")+'</td>';}).join("")+'</tr>';}).join("")+'</table>':
+    '<p class="quiet">Not rated yet. <a href="#scale">Open the scale</a></p>');
+  html+='<h2>My blind tests</h2>'+(bl.length?'<ul class="hist">'+bl.slice().reverse().map(function(x){return '<li><span>'+nice(fromIso(x.date))+'</span><span>'+x.right+' of 5 right</span></li>';}).join("")+'</ul>':
+    '<p class="quiet">No test yet. <a href="#blind">Open the blind test</a></p>');
+  html+='<h2>My word bank</h2><p class="quiet">'+(w?("Best: "+w.best+" of "+WORDS.length+" on the first try."):"Not practised yet.")+'</p>'+wordList();
+  html+='</div><div class="row"><button class="btn" data-act="print">Print or save as PDF</button></div>';
+  app.innerHTML=html;
+  var dl=document.getElementById("notes-own");
+  OILS.forEach(function(x){
+    var d=document.createElement("div"), dt=document.createElement("dt"), dd=document.createElement("dd");
+    dt.textContent=x.name; dd.textContent=(o[x.id]&&String(o[x.id]).trim())?o[x.id]:"Not written yet";
+    d.appendChild(dt); d.appendChild(dd); dl.appendChild(d);
+  });
+}
+
+/* ---------- about ---------- */
+function viewAbout(){
+  app.innerHTML=head("About","Who made this course")+figure("portrait")+
+    '<p class="lead">When we started studying perfumery, we looked for a workbook like this one. It didn’t exist.</p>'+
+    '<p>Behind this course are a PhD and years of research and university teaching. So we knew how people learn a language: step by step, in their own words first, with regular review. Smells slip away even faster than words.</p>'+
+    '<p>So we made the course we wished we’d had. We made it for ourselves first. Now it’s yours.</p>'+
+    '<p>No names, no faces. Let the work speak for itself.</p>'+
+    '<div class="row"><a class="btn" href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Follow @topnotesociety</a>'+
+    '<a class="btn ghost" href="'+WORKBOOK_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Get the free workbook</a></div>';
 }
 
 /* ---------- actions ---------- */
 var actions={
   "own-show":function(){if(ownCount(getOwn())===5){ownShow=true;viewOwn();}},
+  "pairs-mode":function(el){PM=el.dataset.m||null; if(PM==="smell") smellNew(); if(PM==="words") pairsNew(); viewPairs(); window.scrollTo(0,0);},
+  "smell-guess":function(el){S.guess=el.dataset.id;viewSmell();},
+  "smell-mark":function(el){S.right=el.dataset.v==="1"; if(S.right) S.score++; viewSmell();},
+  "smell-next":function(){
+    if(S.i===PAIRS.length-1){S.done=true;var b=store.get("pairsmell",null);store.set("pairsmell",{best:Math.max(S.score,b?b.best:0),date:iso(today())});}
+    else{S.i++;S.guess=null;S.right=null;}
+    viewSmell(); window.scrollTo(0,0);
+  },
+  "smell-again":function(){smellNew();viewSmell();},
+  "tr-a":function(el){T.sel=+el.dataset.i;T.miss=false;viewTranslate();},
+  "tr-b":function(el){
+    if(T.sel===null) return;
+    var i=+el.dataset.i;
+    if(i===T.sel){T.done[i]=true;T.last=i;T.miss=false; if(Object.keys(T.done).length===3) store.set("translate",{date:iso(today())});}
+    else{T.miss=true;}
+    T.sel=null; viewTranslate();
+  },
+  "tr-again":function(){transNew();viewTranslate();},
+  "print":function(){window.print();},
+  "share":function(el){
+    var d={title:"Fluent in Scent",text:"A perfume school at home: a free course that teaches you to smell, by @topnotesociety.",url:SITE_URL};
+    if(navigator.share){navigator.share(d).catch(function(){});return;}
+    try{navigator.clipboard.writeText(SITE_URL).then(function(){el.textContent="Link copied";});}catch(e){el.textContent=SITE_URL;}
+  },
+  "review-cal":function(){
+    var r=store.get("review",null); if(!r||!r.start) return;
+    var nl=String.fromCharCode(13,10), start=fromIso(r.start);
+    function day(d){return ""+d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate());}
+    var ics=["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//Top Note Society//Fluent in Scent//EN"];
+    REVIEWS.forEach(function(x){
+      var d=addDays(start,x.n);
+      ics.push("BEGIN:VEVENT","UID:fis1-"+x.n+"-"+r.start+"@topnotesociety","DTSTAMP:"+day(today())+"T000000Z","DTSTART;VALUE=DATE:"+day(d),"DTEND;VALUE=DATE:"+day(addDays(d,1)),
+        "SUMMARY:Citrus review (Fluent in Scent)","DESCRIPTION:"+x.todo.replace(/[,;]/g,"")+" "+SITE_URL+"#"+x.go,"END:VEVENT");
+    });
+    ics.push("END:VCALENDAR");
+    var a=document.createElement("a");
+    a.href="data:text/calendar;charset=utf-8,"+encodeURIComponent(ics.join(nl));
+    a.download="fluent-in-scent-reviews.ics";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  },
   "pairs-pick":function(el){
     if(P.picked) return;
     P.picked=el.dataset.id;
@@ -657,7 +882,7 @@ var actions={
   },
   "clear":function(el){
     if(el.dataset.sure!=="1"){el.dataset.sure="1";el.textContent="Tap again to clear everything on this device";return;}
-    store.clear(); P=W=B=null; ownShow=false; show(cur); renderFoot();
+    store.clear(); P=W=B=S=T=null; PM=null; ownShow=false; show(cur); renderFoot();
   }
 };
 document.addEventListener("input",function(e){
@@ -683,14 +908,16 @@ document.addEventListener("change",function(e){
 /* ---------- footer + routing ---------- */
 function renderFoot(){
   foot.innerHTML=
+    '<p class="links"><a href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener">Instagram: @topnotesociety</a><a href="#about">About us</a><a href="#notes">My scent notes</a></p>'+
     '<p>No workbook yet? <a href="'+WORKBOOK_URL+'" target="_blank" rel="noopener">Get Module 1: Citrus, free</a>.</p>'+
     '<p>Your answers are saved on this device only. We never see them.</p>'+
     '<button class="link" data-act="clear">Clear my answers</button>';
 }
-var views={start:viewStart,own:viewOwn,pairs:viewPairs,scale:viewScale,words:viewWords,blind:viewBlind,review:viewReview};
+var views={start:viewStart,own:viewOwn,pairs:viewPairs,scale:viewScale,words:viewWords,blind:viewBlind,translate:viewTranslate,review:viewReview,notes:viewNotes,about:viewAbout};
 var cur="start";
 function show(name){cur=views[name]?name:"start";views[cur]();}
 function go(name){
+  if(name==="pairs") PM=null;
   show(name);
   try{if(location.hash!=="#"+cur) location.hash=cur;}catch(e){}
   window.scrollTo(0,0);
