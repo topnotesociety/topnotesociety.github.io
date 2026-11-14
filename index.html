@@ -451,6 +451,16 @@ function statusReview(){
   if(n<0) return "Review waiting since "+nice(d);
   return "Next review: "+nice(d)+" ("+relative(n)+")";
 }
+function dueBanner(){
+  var r=store.get("review",null);
+  if(!r||!r.start){
+    return stepsDone()===6?'<div class="note" style="margin-top:22px"><p class="verdict">Set your review dates</p><p>You have done every exercise. Four short reviews will make the words stay. <a href="#review">Get my dates</a></p></div>':'';
+  }
+  var due=null, start=fromIso(r.start);
+  REVIEWS.forEach(function(x){ if(!due&&!(r.done&&r.done[x.n])&&daysFromToday(addDays(start,x.n))<=0) due=x; });
+  if(!due) return '';
+  return '<div class="note" style="margin-top:22px"><p class="verdict">Time to review</p><p>'+due.when+': '+due.todo+' <a href="#'+due.go+'">Start</a>, then <a href="#review">mark it done</a>.</p></div>';
+}
 function viewStart(){
   var strips=stripsHtml("a"), done=stepsDone();
   var items=[
@@ -469,6 +479,7 @@ function viewStart(){
     '<h1>Fluent in Scent</h1>'+
     '<p class="lead">A complete perfumery course, at home and at your own pace. Five stages take you from single materials to describing whole perfumes, with a real teaching method: small steps, your own words first, practice and regular review.</p>'+
     '<p>You are in Module 1: Citrus. Keep your five strips next to you: lemon, lime, bergamot, sweet orange, grapefruit.</p>'+
+    dueBanner()+
     '<p class="progress" style="margin:26px 0 10px">'+done+' of 6 exercises done</p>'+
     '<ul class="list">'+items.map(function(x){
       return '<li><a href="#'+x[0]+'"><span class="step">'+x[1]+'</span><span class="name">'+x[2]+'</span>'+
@@ -747,7 +758,8 @@ function viewReview(){
         '<span class="todo">'+x.todo+' <a href="#'+x.go+'">Open</a></span>'+
         '<label><input type="checkbox" data-act="review-done" data-n="'+x.n+'" '+(done?"checked":"")+'> Done</label></li>';
     }).join("")+'</ul>'+
-    '<div class="row"><button class="btn ghost" data-act="review-cal">Add the dates to my calendar</button></div>'+
+    '<div class="row"><button class="btn" data-act="review-cal">Remind me: add to my calendar</button></div>'+
+    '<p class="quiet" style="margin-top:10px">This adds the four dates to your phone’s calendar, with a reminder at 9:00 on each day. The site itself cannot send notifications.</p>'+
     '<div class="row"><button class="link" data-act="review-reset">Change the start date</button></div>';
 }
 
@@ -1040,7 +1052,8 @@ var actions={
     REVIEWS.forEach(function(x){
       var d=addDays(start,x.n);
       ics.push("BEGIN:VEVENT","UID:fis1-"+x.n+"-"+r.start+"@topnotesociety","DTSTAMP:"+day(today())+"T000000Z","DTSTART;VALUE=DATE:"+day(d),"DTEND;VALUE=DATE:"+day(addDays(d,1)),
-        "SUMMARY:Citrus review (Fluent in Scent)","DESCRIPTION:"+x.todo.replace(/[,;]/g,"")+" "+SITE_URL+"#"+x.go,"END:VEVENT");
+        "SUMMARY:Citrus review (Fluent in Scent)","DESCRIPTION:"+x.todo.replace(/[,;]/g,"")+" "+SITE_URL+"#"+x.go,
+        "BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:Citrus review (Fluent in Scent)","TRIGGER:PT9H","END:VALARM","END:VEVENT");
     });
     ics.push("END:VCALENDAR");
     var a=document.createElement("a");
