@@ -221,6 +221,9 @@ footer p{font-size:.9rem; color:var(--label)}
 .signup{background:var(--accent); border-radius:3px; padding:20px 18px; margin-top:34px}
 .signup h2{margin-bottom:6px}
 .signup p{color:var(--label); font-size:.95rem}
+.signup .tag{font-size:11px}
+.perks{margin:10px 0 12px; padding-left:1.1em}
+.perks li{margin-bottom:5px}
 .who{display:flex; align-items:center; gap:14px; margin-top:34px; text-decoration:none}
 .who svg{width:56px; height:56px; flex:none; border-radius:50%; background:var(--accent)}
 .who span{font-size:1.05rem; text-decoration:underline; text-underline-offset:4px}
@@ -477,7 +480,7 @@ function viewStart(){
     '<p class="hint">Tap a strip to write on it.</p>'+
     '<p class="tag">A perfume school at home</p>'+
     '<h1>Fluent in Scent</h1>'+
-    '<p class="lead">A complete perfumery course, at home and at your own pace. Five stages take you from single materials to describing whole perfumes, with a real teaching method: small steps, your own words first, practice and regular review.</p>'+
+    '<p class="lead">A complete perfumery course, at home and at your own pace. Six levels take you from single materials to describing whole perfumes, with a real teaching method: small steps, your own words first, practice and regular review.</p>'+
     '<p>You are in Module 1: Citrus. Keep your five strips next to you: lemon, lime, bergamot, sweet orange, grapefruit.</p>'+
     dueBanner()+
     '<p class="progress" style="margin:26px 0 10px">'+done+' of 6 exercises done</p>'+
@@ -486,6 +489,10 @@ function viewStart(){
         '<span class="what">'+x[3]+'</span><span class="status">'+x[4]+'</span></a></li>';
     }).join("")+'</ul>'+
     (done===6?doneCard():'')+
+    '<div class="signup"><p class="tag" style="margin-bottom:8px">The founding class</p><h2>The first 100 students get more</h2>'+
+    '<ul class="perks"><li>A founding student card to keep and share</li><li>Written feedback on your first descriptions</li><li>Module 2 free, before anyone else, and a founding price for life on what comes later</li></ul>'+
+    '<p>We’ll also ask you what the school should build next. Leave your email and we’ll send the free Module 1 workbook straight away.</p>'+
+    '<a class="btn" href="'+WORKBOOK_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Join the founding class</a></div>'+
     '<h2 style="margin-top:44px">More in Module 1</h2>'+
     '<ul class="list" style="margin-top:12px">'+[
       ["shelf","Shelf","Your citrus shelf","What to buy, how to choose, and what you already have at home."],
@@ -499,19 +506,25 @@ function viewStart(){
       return '<li><a href="#'+x[0]+'"><span class="step">'+x[1]+'</span><span class="name">'+x[2]+'</span><span class="what">'+x[3]+'</span></a></li>';
     }).join("")+'</ul>'+
     '<h2 style="margin-top:44px">The full course</h2>'+
-    '<p class="quiet" style="margin:6px 0 14px">Five stages, mapped to language levels A1 to C1. Each module adds a few oils to your own library.</p>'+
+    '<p class="quiet" style="margin:6px 0 14px">Six levels, named like the levels of a language course, from A1 to C2. Which materials you meet at each level may still change as the course grows.</p>'+
     '<ol class="course">'+[
-      ["A1","Alphabet","Single raw materials, smelled in pairs. Citrus, herbs and aromatics.","You are here"],
-      ["A2","Vocabulary","Descriptors: texture, temperature, light, shape. Flowers, spices.",""],
-      ["B1","Grammar","Top, heart, base; accords; families. Woods, resins and balsams, musks.",""],
-      ["B2","Translation","Parallels across domains: cinnamon and cola, iris and carrot. Gourmands, animalics and leather.",""],
-      ["C1","Fluency","Describing and comparing finished perfumes. Blind tests, reviews, your own scent dictionary.",""]
+      ["A1","Alphabet","Single raw materials, smelled in pairs.","You are here"],
+      ["A2","Vocabulary","Descriptors: texture, temperature, light, shape.",""],
+      ["B1","Grammar","How smells combine: top, heart, base; accords; families.",""],
+      ["B2","Translation","Saying one smell in other words: parallels with food, drinks and places.",""],
+      ["C1","Fluency","Describing and comparing finished perfumes.",""],
+      ["C2","Mastery","Nuance and style: reading a perfume the way you read a text, and writing about it in your own voice.",""]
     ].map(function(x){
       return '<li><span class="lvl">'+x[0]+'</span><span class="name">'+x[1]+(x[3]?' <span class="here">'+x[3]+'</span>':'')+'</span><span class="what">'+x[2]+'</span></li>';
     }).join("")+'</ol>'+
-    '<div class="signup"><h2>Module 2 is on its way</h2>'+
-    '<p>Get the free Module 1 workbook by email, and hear first when the next module is ready.</p>'+
-    '<a class="btn" href="'+WORKBOOK_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Get it by email</a></div>'+
+    '<h2 style="margin-top:34px">Bonuses along the way</h2>'+
+    '<ul class="course" style="margin-top:12px">'+[
+      ["In the kitchen","What each new family of smells does for your cooking."],
+      ["The dirty side of beautiful things","Why the most beautiful flowers hide an animal note, and other surprises."],
+      ["Fun facts","The chemistry behind what your nose already knows."]
+    ].map(function(x){
+      return '<li><span class="lvl">Bonus</span><span class="name">'+x[0]+'</span><span class="what">'+x[1]+'</span></li>';
+    }).join("")+'</ul>'+
     '<a class="who" href="#about">'+figure("")+'<span>Who made this course?</span></a>'+
     '<p class="quiet" style="margin-top:22px">Smell from paper, a few centimetres from the nose. Never put undiluted oil on skin.</p>';
 }
@@ -879,8 +892,8 @@ function viewLibrary(){
       ["Keep the stock pure.","Buy undiluted oils. When a module asks for a dilution, make a little in a separate small vial, so the bottle itself stays pure for years of practice."],
       ["Dark, cool, closed.","Keep the bottles in their dark glass, caps tight, away from sun and heat. A drawer or a box works well."],
       ["Write the date.","Note on each label when you opened it."],
-      ["Citrus first to fade.","Citrus oils are the most fragile and are freshest within about a year; keeping them in the fridge helps. Woods and resins from later modules keep much longer."],
-      ["One box, one family.","Group bottles by module, so your shelf looks like the course: citrus, herbs, flowers, woods."]
+      ["Citrus first to fade.","Citrus oils are the most fragile and are freshest within about a year; keeping them in the fridge helps. Woods and resins keep much longer."],
+      ["One box, one family.","Group bottles by module, so your shelf follows the course."]
     ].map(function(x){return '<li><b>'+x[0]+'</b>'+x[1]+'</li>';}).join("")+'</ul>'+
     '<p class="quiet" style="margin-top:14px">Your strips can stay too: write the name and date on each and keep them in an envelope. Smelling an old strip is a review in itself.</p>'+
     '<div class="row"><a class="btn" href="#labels" style="text-decoration:none;display:inline-flex;align-items:center">Print labels</a><a class="btn ghost" href="#shelf" style="text-decoration:none;display:inline-flex;align-items:center">What to buy</a></div>';
