@@ -818,7 +818,7 @@ function viewAbout(){
     '<p class="lead">When we started studying perfumery, we looked for a workbook like this one. It didn’t exist.</p>'+
     '<p>The courses we took were taught by people who are masters of their craft, and we are grateful for everything they shared. But knowing a craft and teaching it are two different skills. The material came quickly, one subject after another, and we came home with a great deal of knowledge and no order to keep it in.</p>'+
     '<p>Behind this course are a PhD and years of research and university teaching. So we knew how people learn a language: step by step, in their own words first, with regular review. Smells slip away even faster than words.</p>'+
-    '<p>So we went back to the beginning and put everything in order, the way we would teach it. This course brings the two together: what we learned from perfumers, and what we know about teaching.</p>'+
+    '<p>So we went back to the beginning and put everything in order, the way we would teach it. This course combines both: the craft of perfumery and the craft of teaching.</p>'+
     '<p>It began as our own revision notes, not as a product. We made it for ourselves first. Now it’s yours.</p>'+
     '<p>No names, no faces. Let the work speak for itself.</p>'+
     '<div class="essay"><h2>Why we teach it this way</h2>'+
@@ -1183,7 +1183,10 @@ function renderFoot(){
 }
 var views={start:viewStart,own:viewOwn,pairs:viewPairs,scale:viewScale,words:viewWords,blind:viewBlind,translate:viewTranslate,review:viewReview,notes:viewNotes,about:viewAbout,shelf:viewShelf,library:viewLibrary,fade:viewFade,kitchen:viewKitchen,theory:viewTheory,labels:viewLabels};
 var cur="start";
-function show(name){cur=views[name]?name:"start";views[cur]();}
+function track(){
+  try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:cur==="start"?"/":"/"+cur,title:cur}); }catch(e){}
+}
+function show(name){cur=views[name]?name:"start";views[cur]();track();}
 function go(name){
   if(name==="pairs") PM=null;
   show(name);
@@ -1199,6 +1202,14 @@ function route(){show(hashName());}
 window.addEventListener("hashchange",function(){if(hashName()!==cur){route();window.scrollTo(0,0);}});
 renderFoot();
 route();
+if(location.hostname==="topnotesociety.github.io"){
+  window.goatcounter={no_onload:true};
+  var gs=document.createElement("script");
+  gs.async=true; gs.src="https://gc.zgo.at/count.js";
+  gs.setAttribute("data-goatcounter","https://topnotesociety.goatcounter.com/count");
+  gs.onload=track;
+  document.head.appendChild(gs);
+}
 })();
 </script>
 </body>
