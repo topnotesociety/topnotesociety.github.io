@@ -235,6 +235,44 @@ table.scale th{font-family:var(--sans); font-weight:300; font-size:.72rem; color
 table.scale th:first-child,table.scale td:first-child{text-align:left}
 footer .links{display:flex; flex-wrap:wrap; gap:6px 18px}
 @media print{.brand,.back,footer,.row,.no-print{display:none !important} body{background:#fff} .wrap{padding:0}}
+.pyr{border-top:1px solid var(--rule); margin:18px 0}
+.pyr div{display:grid; grid-template-columns:4.4rem 1fr; gap:2px 10px; padding:12px 0; border-bottom:1px solid var(--line)}
+.pyr b{font-family:var(--sans); font-weight:300; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--label); padding-top:.5em}
+.pyr span{font-size:1.05rem}
+.pyr i{grid-column:2; font-style:normal; color:var(--label); font-size:.95rem}
+.clock{font-family:var(--sans); font-weight:300; font-size:2.6rem; line-height:1.1; margin:10px 0 2px; font-variant-numeric:tabular-nums}
+.fade{list-style:none; margin:14px 0 0; padding:0; border-top:1px solid var(--rule)}
+.fade li{padding:14px 0; border-bottom:1px solid var(--line)}
+.fade .t{display:flex; justify-content:space-between; align-items:baseline}
+.fade .t b{font-weight:500; font-size:1.1rem}
+.fade .t span{font-family:var(--sans); font-weight:300; font-size:.82rem; color:var(--label); font-variant-numeric:tabular-nums}
+.fade li.wait .dots,.fade li.wait .txt,.fade li.wait .quiet{opacity:.35}
+.txt{display:block; width:100%; font-family:var(--serif); font-size:1rem; padding:10px 12px; border:1px solid var(--line); border-radius:3px; background:var(--paper); color:var(--ink); margin-top:8px}
+.shop{list-style:none; margin:0; padding:0; border-top:1px solid var(--rule)}
+.shop li{display:grid; grid-template-columns:1fr auto; gap:2px 12px; padding:12px 0; border-bottom:1px solid var(--line)}
+.shop .lat{grid-column:1 / -1; color:var(--label); font-size:.92rem}
+.shop .buy{font-family:var(--sans); font-weight:300; font-size:.85rem; white-space:nowrap; padding-top:.2em}
+.lib{padding:18px 0; border-bottom:1px solid var(--line)}
+.lib .line{display:flex; flex-wrap:wrap; align-items:center; gap:6px 18px; margin-top:8px; font-family:var(--sans); font-weight:300; font-size:.88rem}
+.lib .line label{display:flex; align-items:center; gap:8px; min-height:44px; cursor:pointer}
+.lib input[type=checkbox]{width:22px; height:22px; accent-color:var(--ink)}
+.lib .mine{color:var(--label); font-style:italic; margin:6px 0 0}
+.lib .mine:empty{display:none}
+.steps{margin:0; padding:0; list-style:none; border-top:1px solid var(--rule)}
+.steps li{padding:14px 0; border-bottom:1px solid var(--line)}
+.steps b{display:block; font-weight:500; font-size:1.1rem}
+.essay h2{margin:34px 0 10px; font-size:1.35rem; font-weight:400}
+.essay .src{font-size:.88rem; color:var(--label); padding-left:1.1em}
+.essay .src li{margin-bottom:6px}
+.sheet-l{display:flex; flex-wrap:wrap; gap:4mm; margin-top:10px}
+.lab{width:50mm; height:24mm; border:1px dashed #A3A3A3; border-radius:1mm; padding:2.5mm 3mm; background:#fff; color:#2B2B2B; display:flex; flex-direction:column; justify-content:space-between; overflow:hidden}
+.lab b{font-weight:500; font-size:13pt; line-height:1.1}
+.lab em{font-size:8pt; color:#6F6F6F}
+.lab small{font-family:var(--sans); font-weight:300; font-size:6.5pt; color:#6F6F6F}
+.lab.cap{width:18mm; height:18mm; border-radius:50%; padding:0; align-items:center; justify-content:center; font-size:8pt; text-align:center; line-height:1.1}
+.lab.box{width:90mm; height:30mm}
+.lab.box b{font-size:20pt; font-weight:400}
+@media print{.wrap{max-width:none; padding:8mm}}
 </style>
 </head>
 <body>
@@ -321,7 +359,7 @@ var store={
   },
   clear:function(){
     mem={};
-    ["own","pairs","pairsmell","words","scale","blind","translate","review"].forEach(function(k){
+    ["own","pairs","pairsmell","words","scale","blind","translate","review","lib","fade"].forEach(function(k){
       try{localStorage.removeItem("fis1:"+k);}catch(e){}
     });
   }
@@ -437,7 +475,18 @@ function viewStart(){
         '<span class="what">'+x[3]+'</span><span class="status">'+x[4]+'</span></a></li>';
     }).join("")+'</ul>'+
     (done===6?doneCard():'')+
-    '<p style="margin-top:22px"><a href="#notes">My scent notes</a> <span class="quiet">Everything you wrote and rated, on one page.</span></p>'+
+    '<h2 style="margin-top:44px">More in Module 1</h2>'+
+    '<ul class="list" style="margin-top:12px">'+[
+      ["shelf","Shelf","Your citrus shelf","What to buy, how to choose, and what you already have at home."],
+      ["library","Library","My scent library","Your bottles, their opening dates and how long they stay fresh."],
+      ["fade","Fun fact","Born to be a top note","Why citrus comes first, with a timer to watch it fade."],
+      ["kitchen","Bonus","In the kitchen","A better nose, a better palate. Four things to try with real fruit."],
+      ["notes","Notes","My scent notes","Everything you wrote and rated, on one page to print."],
+      ["labels","Print","Labels for your bottles","Bottle, cap and box labels, with your opening dates."],
+      ["theory","Theory","Why words first","The ideas behind the method, from phonetics to perfumery."]
+    ].map(function(x){
+      return '<li><a href="#'+x[0]+'"><span class="step">'+x[1]+'</span><span class="name">'+x[2]+'</span><span class="what">'+x[3]+'</span></a></li>';
+    }).join("")+'</ul>'+
     '<h2 style="margin-top:44px">The full course</h2>'+
     '<p class="quiet" style="margin:6px 0 14px">Five stages, mapped to language levels A1 to C1. Each module adds a few oils to your own library.</p>'+
     '<ol class="course">'+[
@@ -755,16 +804,210 @@ function viewNotes(){
 function viewAbout(){
   app.innerHTML=head("About","Who made this course")+figure("portrait")+
     '<p class="lead">When we started studying perfumery, we looked for a workbook like this one. It didn’t exist.</p>'+
+    '<p>The courses we took were taught by people who are masters of their craft, and we are grateful for everything they shared. But knowing a craft and teaching it are two different skills. The material came quickly, one subject after another, and we came home with a great deal of knowledge and no order to keep it in.</p>'+
     '<p>Behind this course are a PhD and years of research and university teaching. So we knew how people learn a language: step by step, in their own words first, with regular review. Smells slip away even faster than words.</p>'+
-    '<p>So we made the course we wished we’d had. We made it for ourselves first. Now it’s yours.</p>'+
+    '<p>So we went back to the beginning and put everything in order, the way we would teach it. This course brings the two together: what we learned from perfumers, and what we know about teaching.</p>'+
+    '<p>It began as our own revision notes, not as a product. We made it for ourselves first. Now it’s yours.</p>'+
     '<p>No names, no faces. Let the work speak for itself.</p>'+
+    '<div class="essay"><h2>Why we teach it this way</h2>'+
+    '<p>Ask two people what a perfume smells like. One reaches for a memory: “it smells like my grandmother’s house.” The other reaches for a shared language: “powdery, waxy, with a soapy aldehyde.” The first answer is true for one person only. The second can be understood, checked and remembered by anyone who knows the words.</p>'+
+    '<p>That is the difference between an amateur and a professional. It is not a better nose. It is vocabulary, and the habit of drawing parallels between distant things, like cinnamon and cola.</p>'+
+    '<p>So we teach perfume the way a second language is taught. First the words, each tied to the material that shows it best. Always in pairs, because the difference between two similar smells is where a word lives. In small steps, with your own words first and regular review, so that what you learn stays.</p>'+
+    '<p>And the words do more than describe. Once you can name a difference, you start to notice it.</p>'+
+    '<h2>Do you need a special nose?</h2>'+
+    '<p>No. When researchers compare trained experts with beginners, the experts’ noses turn out to be no more sensitive. What training changes is what you do with a smell: telling it apart from its neighbour, remembering it, naming it. If you can smell your morning coffee, you have all the equipment this course needs.</p>'+
+    '<p><a href="#theory">Read the theory behind the method</a></p></div>'+
     '<div class="row"><a class="btn" href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Follow @topnotesociety</a>'+
     '<a class="btn ghost" href="'+WORKBOOK_URL+'" target="_blank" rel="noopener" style="text-decoration:none;display:inline-flex;align-items:center">Get the free workbook</a></div>';
+}
+
+/* ---------- shelf: what to buy ---------- */
+var SHOP=[
+  {n:"Lemon essential oil, 30 ml",lat:"Citrus limon",tip:"Cold-pressed is best",p:"$7",u:"https://www.iherb.com/pr/now-foods-essential-oils-lemon-1-fl-oz-30-ml/928"},
+  {n:"Lime essential oil, 30 ml",lat:"Citrus aurantifolia",tip:"Cold-pressed smells of fresh lime; distilled, of lime sweets",p:"$12",u:"https://www.iherb.com/pr/now-foods-essential-oils-lime-1-fl-oz-30-ml/930"},
+  {n:"Bergamot essential oil, 30 ml",lat:"Citrus bergamia",tip:"“FCF” or “bergapten-free” is gentler if it ever touches skin",p:"$14",u:"https://www.iherb.com/pr/now-foods-essential-oils-bergamot-1-fl-oz-30-ml/913"},
+  {n:"Sweet orange essential oil, 30 ml",lat:"Citrus sinensis",tip:"Not “bitter orange”: that is a different oil",p:"$5",u:"https://www.iherb.com/pr/now-foods-essential-oils-orange-1-fl-oz-30-ml/953"},
+  {n:"Grapefruit essential oil, 30 ml",lat:"Citrus paradisi",tip:"Pink or white both work",p:"$8",u:"https://www.iherb.com/pr/now-foods-essential-oils-grapefruit-1-fl-oz-30-ml/934"}
+];
+function viewShelf(){
+  app.innerHTML=head("What you need","Your citrus shelf","Five oils cost about $45, bought once. iHerb delivers to most countries; any pure essential oil from a pharmacy or health shop works too.")+
+    '<ul class="shop">'+SHOP.map(function(x){
+      return '<li><span>'+x.n+'</span><a class="buy" href="'+x.u+'" target="_blank" rel="noopener">iHerb, about '+x.p+'</a><span class="lat"><em>'+x.lat+'</em>. '+x.tip+'.</span></li>';
+    }).join("")+
+    '<li><span>Smelling strips</span><a class="buy" href="https://www.amazon.com/s?k=perfume+testing+strips" target="_blank" rel="noopener">Amazon, about $5</a><span class="lat">Optional: 1 × 12 cm strips cut from thick plain white paper work too.</span></li></ul>'+
+    '<p class="quiet" style="margin-top:12px">Prices as of November 2026 (NOW Foods oils on iHerb); they vary by country.</p>'+
+    '<h2 style="margin-top:30px">How to choose</h2>'+
+    '<p>Look for “100% pure essential oil” and the Latin name on the label, in a small dark glass bottle of 10 to 30 ml. Skip “fragrance oil” or “perfume oil”: those are blends, not the real material. Skip “roll-on”, “in jojoba” or “diluted” too: the oil is already mixed with something else.</p>'+
+    '<h2 style="margin-top:30px">Already at home</h2>'+
+    '<p>A lemon and a lime. An orange. Earl Grey tea. A can of cola. White printer paper and scissors. A pen.</p>'+
+    '<div class="note"><p class="verdict">Safety</p><p>Smell from paper, a few centimetres from the nose, with a sniff of your own sleeve between materials. Never put undiluted oil on skin. Cold-pressed citrus oils (bergamot, lime, lemon, grapefruit) can be phototoxic: keep them off skin before going into the sun.</p></div>'+
+    '<div class="row"><a class="btn" href="#library" style="text-decoration:none;display:inline-flex;align-items:center">Open my scent library</a></div>';
+}
+
+/* ---------- my scent library ---------- */
+function getLib(){var l=store.get("lib",null);return (l&&typeof l==="object")?l:{};}
+function freshLine(x){
+  if(!x||!x.opened) return "";
+  var d=fromIso(x.opened), until=new Date(d.getFullYear()+1,d.getMonth(),d.getDate());
+  return daysFromToday(until)>=0?("Freshest until "+until.toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"})):"Opened more than a year ago: compare it with a fresh peel";
+}
+function viewLibrary(){
+  var l=getLib(), o=getOwn();
+  app.innerHTML=head("Your scent library","Build a library that stays","Every module adds a few bottles. Look after them, and they will serve you through the whole course and every review.")+
+    OILS.map(function(x){
+      var e=l[x.id]||{};
+      return '<section class="lib"><h2 style="--tint:'+x.tint+'"><span class="dot"></span>'+x.name+'</h2>'+
+        '<p class="mine" data-mine="'+x.id+'"></p>'+
+        '<div class="line"><label><input type="checkbox" data-lib="have" data-id="'+x.id+'" '+(e.have?"checked":"")+'> On my shelf</label>'+
+        '<label>Opened <input type="date" data-lib="opened" data-id="'+x.id+'" max="'+iso(today())+'"></label></div>'+
+        '<p class="quiet" data-fresh="'+x.id+'" style="margin:6px 0 0">'+freshLine(e)+'</p></section>';
+    }).join("")+
+    '<h2 style="margin:30px 0 12px">How to look after it</h2>'+
+    '<ul class="steps">'+[
+      ["Keep the stock pure.","Buy undiluted oils. When a module asks for a dilution, make a little in a separate small vial, so the bottle itself stays pure for years of practice."],
+      ["Dark, cool, closed.","Keep the bottles in their dark glass, caps tight, away from sun and heat. A drawer or a box works well."],
+      ["Write the date.","Note on each label when you opened it."],
+      ["Citrus first to fade.","Citrus oils are the most fragile and are freshest within about a year; keeping them in the fridge helps. Woods and resins from later modules keep much longer."],
+      ["One box, one family.","Group bottles by module, so your shelf looks like the course: citrus, herbs, flowers, woods."]
+    ].map(function(x){return '<li><b>'+x[0]+'</b>'+x[1]+'</li>';}).join("")+'</ul>'+
+    '<p class="quiet" style="margin-top:14px">Your strips can stay too: write the name and date on each and keep them in an envelope. Smelling an old strip is a review in itself.</p>'+
+    '<div class="row"><a class="btn" href="#labels" style="text-decoration:none;display:inline-flex;align-items:center">Print labels</a><a class="btn ghost" href="#shelf" style="text-decoration:none;display:inline-flex;align-items:center">What to buy</a></div>';
+  OILS.forEach(function(x){
+    var m=app.querySelector('[data-mine="'+x.id+'"]'), d=app.querySelector('[data-lib="opened"][data-id="'+x.id+'"]');
+    if(m) m.textContent=(o[x.id]&&String(o[x.id]).trim())?("My words: "+o[x.id]):"";
+    if(d&&l[x.id]&&l[x.id].opened) d.value=l[x.id].opened;
+  });
+}
+
+/* ---------- fun fact + fade timer ---------- */
+var MARKS=[{m:0,l:"Now"},{m:15,l:"15 minutes"},{m:60,l:"1 hour"},{m:180,l:"3 hours"}];
+var fadeTick=null;
+function getFade(){var f=store.get("fade",null);return (f&&f.start)?f:{start:0,log:{}};}
+function clockText(ms){
+  var t=Math.max(0,Math.floor(ms/1000)), h=Math.floor(t/3600), m=Math.floor((t%3600)/60), x=t%60;
+  return (h?h+":"+pad(m):""+m)+":"+pad(x);
+}
+function fadeUpdate(){
+  if(cur!=="fade"){ if(fadeTick){clearInterval(fadeTick);fadeTick=null;} return; }
+  var f=getFade(); if(!f.start) return;
+  var el=Date.now()-f.start, c=document.getElementById("fade-clock");
+  if(c) c.textContent=clockText(el);
+  MARKS.forEach(function(k){
+    var li=document.getElementById("fade-"+k.m); if(!li) return;
+    var left=k.m*60000-el, due=left<=0, st=li.querySelector(".t span");
+    li.className=due?"":"wait";
+    var cs=li.querySelectorAll("button,input"); for(var i=0;i<cs.length;i++) cs[i].disabled=!due;
+    if(st) st.textContent=due?((f.log[k.m]&&f.log[k.m].s)?"Noted":"Smell it now"):("in "+clockText(left));
+  });
+}
+function viewFade(){
+  var f=getFade();
+  var html=head("Fun fact","Born to be a top note","Spray a perfume and the first thing you smell is almost always citrus. Ten minutes later it is fading. This is chemistry, not chance.")+
+    '<div class="pyr"><div><b>Top</b><span>The first minutes, up to about an hour</span><i>Citrus, herbs</i></div>'+
+    '<div><b>Heart</b><span>The next few hours</span><i>Flowers, spices</i></div>'+
+    '<div><b>Base</b><span>Many hours; days on a paper strip</span><i>Woods, resins, musks, vanilla</i></div></div>'+
+    '<p>Citrus oils are made mostly of small, light molecules. About two thirds of lemon oil is limonene, one of the lightest in perfumery. Light molecules evaporate fast, so they reach your nose first and leave first. That is why perfumers place citrus at the top: it opens a perfume with brightness, then makes room for the heart.</p>'+
+    '<h2 style="margin-top:34px">Watch it fade</h2>';
+  if(!f.start){
+    html+='<p>Put one drop of lemon oil on a fresh strip, then start the clock. Come back at each mark and smell: notice how it changes, not only how strong it is.</p>'+
+      '<div class="row"><button class="btn" data-act="fade-start">The drop is on the strip: start the clock</button></div>';
+  }else{
+    html+='<p class="clock" id="fade-clock">0:00</p><p class="quiet">since the drop. You can close this page; the clock keeps counting.</p>'+
+      '<ul class="fade">'+MARKS.map(function(k){
+        var e=f.log[k.m]||{}, dots="";
+        for(var v=1;v<=5;v++) dots+='<button class="d" data-act="fade-s" data-m="'+k.m+'" data-v="'+v+'" aria-pressed="'+(e.s===v)+'" aria-label="'+k.l+', strength '+v+'"><i>'+v+'</i></button>';
+        return '<li id="fade-'+k.m+'"><div class="t"><b>'+k.l+'</b><span></span></div>'+
+          '<p class="quiet" style="margin:8px 0 0">How strong?</p><div class="dots">'+dots+'</div>'+
+          '<input class="txt" type="text" data-fade="'+k.m+'" placeholder="What’s left?" aria-label="'+k.l+': what is left?"></li>';
+      }).join("")+'</ul>'+
+      '<div class="row"><button class="link" data-act="fade-reset">Start again with a new strip</button></div>';
+  }
+  app.innerHTML=html;
+  if(f.start){
+    MARKS.forEach(function(k){var i=app.querySelector('[data-fade="'+k.m+'"]'); if(i) i.value=(f.log[k.m]&&f.log[k.m].t)||"";});
+    fadeUpdate();
+    if(!fadeTick) fadeTick=setInterval(fadeUpdate,1000);
+  }
+}
+
+/* ---------- bonus: in the kitchen ---------- */
+function viewKitchen(){
+  app.innerHTML=head("Bonus","In the kitchen","A better nose, a better palate. Much of what we call taste is really smell, rising from the mouth to the nose. Train one, and the other follows.")+
+    '<ul class="steps">'+[
+      ["The pinched-nose test","Pinch your nose and put a little lemon zest on your tongue. You taste almost nothing, maybe a little bitterness. Let go, and the lemon arrives. That was smell all along."],
+      ["Zest sugar","Rub a spoon of sugar with lemon zest between your fingers, and another with lime. The oils from the peel scent the sugar. Smell both, then use them in tea, yogurt or a cake."],
+      ["A pair you can drink","Make two cups of black tea: one Earl Grey, one plain with a curl of lemon zest. Bergamot against lemon, in a cup. Which is more floral? Which is sharper?"],
+      ["Finish with a peel","Grate orange zest over dark chocolate, lime zest over mango or avocado, lemon zest over pasta or fish. Smell before you taste: the zest is a top note for your plate."]
+    ].map(function(x){return '<li><b>'+x[0]+'</b>'+x[1]+'</li>';}).join("")+'</ul>'+
+    '<div class="note"><p class="verdict">Real fruit only</p><p>Essential oils are for smelling, never for eating. Wash the fruit before zesting.</p></div>';
+}
+
+/* ---------- labels to print ---------- */
+function viewLabels(){
+  var l=getLib();
+  function opened(id){var e=l[id]; return (e&&e.opened)?fromIso(e.opened).toLocaleDateString("en-GB",{day:"numeric",month:"short",year:"numeric"}):"____________";}
+  app.innerHTML='<div class="no-print">'+head("To print","Labels for your library","Print on sticker paper, or on plain paper fixed with clear tape. Opening dates come from your scent library; a missing date is left as a line to fill in by hand.")+
+    '<div class="row" style="margin:0 0 8px"><button class="btn" data-act="print">Print the labels</button><a class="btn ghost" href="#library" style="text-decoration:none;display:inline-flex;align-items:center">Set opening dates</a></div></div>'+
+    '<p class="kw" style="margin:22px 0 0">Bottles</p><div class="sheet-l">'+OILS.map(function(x,i){
+      return '<div class="lab"><b>'+x.name+'</b><em>'+SHOP[i].lat+'</em><small>Opened: '+opened(x.id)+'</small></div>';
+    }).join("")+'</div>'+
+    '<p class="kw" style="margin:22px 0 0">Caps</p><div class="sheet-l">'+OILS.map(function(x){
+      return '<div class="lab cap">'+(x.id==="orange"?"Orange":x.name)+'</div>';
+    }).join("")+'</div>'+
+    '<p class="kw" style="margin:22px 0 0">Blind test strips</p><div class="sheet-l">'+[1,2,3,4,5].map(function(n){
+      return '<div class="lab cap" style="font-size:13pt">'+n+'</div>';
+    }).join("")+'</div>'+
+    '<p class="kw" style="margin:22px 0 0">Box and envelope</p><div class="sheet-l">'+
+    '<div class="lab box"><small>Fluent in Scent, Module 1</small><b>Citrus</b><small>Lemon, lime, bergamot, sweet orange, grapefruit</small></div>'+
+    '<div class="lab box"><small>Fluent in Scent, Module 1</small><b>Citrus strips</b><small>Name and date on every strip</small></div></div>';
+}
+
+/* ---------- theory ---------- */
+function viewTheory(){
+  app.innerHTML=head("Theory","Why words first","The ideas behind Fluent in Scent, for those who like to know why a method works. Five minutes of reading; none of it is needed to do the exercises.")+
+    '<div class="essay">'+
+    '<h2>The sound you cannot hear</h2>'+
+    '<p>Adults who learn a new language often cannot hear a difference that their own language does not use. The classic case is English r and l for speakers of Japanese: to an untrained ear, the two are one sound. It is not a problem of hearing. The ear works; the category is missing.</p>'+
+    '<p>Language teachers solve this with minimal pairs: two words that differ in a single sound, such as rock and lock, heard side by side until the difference becomes obvious. Training of this kind improves what learners perceive, and after that what they can say. The order is always the same: perceive, tell apart, name.</p>'+
+    '<p>Smell works in the same way. Lemon and lime are simply “citrus” until you put them side by side. Then lime turns greener, colder and sharper, and you have three new words that mean something.</p>'+
+    '<h2>How perfumers have long trained</h2>'+
+    '<p>Perfumers found this out long before us. In the classic method written down by the perfumer Jean Carles in 1961, a student does not begin with perfumes. A student begins with single raw materials, natural and synthetic, arranged by family: first the contrasts between families, then the fine differences inside one family, such as lemon, lime, orange and bergamot.</p>'+
+    '<p>Carles also insisted that no nose is better than another. What sets a perfumer apart, he wrote, is olfactory memory, and memory comes from daily training. Fluent in Scent follows the same path and adds what language teaching knows about how memory is built.</p>'+
+    '<h2>An ordinary nose is enough</h2>'+
+    '<p>It is tempting to think that perfumers are born with a rare nose, the way some people seem to be born with an ear for music. Research does not support this. In studies of wine experts, their sensitivity to smells was similar to that of novices; where they did better was in recognising smells they had met before. In a study of perfumers and flavourists, training went together with a better short-term memory for smells.</p>'+
+    '<p>Noses are not identical. Almost everyone has a blind spot for one molecule or another, perfumers included. Smell also tires within minutes, and it can weaken with age or after an illness. That is why we ask you to take breaks, and why a smell you cannot find is no failure. But these are details. The gap between a beginner and a professional is made of practice.</p>'+
+    '<h2>Why descriptors</h2>'+
+    '<p>A descriptor is a shared word for one quality of a smell: green, powdery, waxy, zesty. Without descriptors, a smell can only be pointed at through a private memory. With them, you can compare two smells, recall one the next day and be understood by someone else.</p>'+
+    '<p>Descriptors also cut a smell into parts. “Lemon” is one impression. “Zesty, juicy, transparent, slightly acidulated” is four things to check, and each of them can be found again in other materials. That is how a fluent smeller links distant things: the bitter note in grapefruit and in bergamot, the lime in a glass of cola.</p>'+
+    '<h2>Does language shape what we perceive?</h2>'+
+    '<p>In the 1930s the linguists Edward Sapir and Benjamin Lee Whorf argued that the language we speak shapes the way we see the world. The strong form of the idea, that language decides what we are able to think, has not survived testing. A milder form has: the words we have make some distinctions faster and easier to draw.</p>'+
+    '<p>Colour gives the best-known example. Russian has two everyday words for blue, one lighter and one darker, where English has one. In experiments, Russian speakers are quicker to tell two blues apart when they fall on different sides of that line.</p>'+
+    '<p>Smell gives the most encouraging one. English speakers are famously poor at naming even familiar smells. But the Jahai, a people of the Malay Peninsula, have a set of abstract smell words and name smells as easily as they name colours. Weakness with smell is not built into the nose. Much of it is a missing vocabulary, and a vocabulary can be learned.</p>'+
+    '<h2>What this means in practice</h2>'+
+    '<p>Every step of a module comes from one of these ideas. Your own words come first, because new knowledge holds better when it is tied to something you already have. Professional words follow, each attached to the material that teaches it best. Pairs train the contrast. The six fixed axes give you the same ruler for every material. And the reviews after one day, three days, one week and one month are there because memory fades fastest at the beginning, and a short return at the right moment is what makes a word stay.</p>'+
+    '<h2>To read further</h2>'+
+    '<ul class="src"><li>Jean Carles, “A Method of Creation and Perfumery”, 1961.</li>'+
+    '<li>Wendy Parr, David Heatherbell and Geoffrey White, “Demystifying wine expertise”, Chemical Senses, 2002.</li>'+
+    '<li>Asifa Majid and Niclas Burenhult, “Odors are expressible in language, as long as you speak the right language”, Cognition, 2014.</li>'+
+    '<li>Jonathan Winawer and colleagues, “Russian blues reveal effects of language on color discrimination”, PNAS, 2007.</li>'+
+    '<li>John Logan, Scott Lively and David Pisoni, “Training Japanese listeners to identify English /r/ and /l/”, Journal of the Acoustical Society of America, 1991.</li></ul>'+
+    '</div>'+
+    '<div class="row"><a class="btn" href="#pairs" style="text-decoration:none;display:inline-flex;align-items:center">Try a minimal pair</a><a class="btn ghost" href="#about" style="text-decoration:none;display:inline-flex;align-items:center">Who made this course</a></div>';
 }
 
 /* ---------- actions ---------- */
 var actions={
   "own-show":function(){if(ownCount(getOwn())===5){ownShow=true;viewOwn();}},
+  "fade-start":function(){store.set("fade",{start:Date.now(),log:{}});viewFade();},
+  "fade-reset":function(el){
+    if(el.dataset.sure!=="1"){el.dataset.sure="1";el.textContent="Tap again to clear this strip and start over";return;}
+    store.set("fade",null);viewFade();
+  },
+  "fade-s":function(el){
+    var f=getFade(), m=el.dataset.m; f.log[m]=f.log[m]||{}; f.log[m].s=+el.dataset.v; store.set("fade",f);
+    var sibs=el.parentNode.querySelectorAll(".d"); for(var i=0;i<sibs.length;i++) sibs[i].setAttribute("aria-pressed",sibs[i]===el?"true":"false");
+    fadeUpdate();
+  },
   "pairs-mode":function(el){PM=el.dataset.m||null; if(PM==="smell") smellNew(); if(PM==="words") pairsNew(); viewPairs(); window.scrollTo(0,0);},
   "smell-guess":function(el){S.guess=el.dataset.id;viewSmell();},
   "smell-mark":function(el){S.right=el.dataset.v==="1"; if(S.right) S.score++; viewSmell();},
@@ -886,7 +1129,9 @@ var actions={
   }
 };
 document.addEventListener("input",function(e){
-  var el=e.target; if(!el.dataset||!el.dataset.own) return;
+  var el=e.target; if(!el.dataset) return;
+  if(el.dataset.fade){var fd=getFade(); if(!fd.start) return; fd.log[el.dataset.fade]=fd.log[el.dataset.fade]||{}; fd.log[el.dataset.fade].t=el.value; store.set("fade",fd); return;}
+  if(!el.dataset.own) return;
   var o=getOwn(); o[el.dataset.own]=el.value; store.set("own",o);
   var n=ownCount(o), c=document.getElementById("own-count"), b=document.getElementById("own-btn");
   if(c) c.textContent=n+" of 5 written · saved as you write";
@@ -903,17 +1148,27 @@ document.addEventListener("change",function(e){
   var el=e.target;
   if(el.id==="rev-date"&&el.value){store.set("review",{start:el.value,done:{}});viewReview();}
   else if(el.type==="checkbox"&&el.dataset.act){var f=actions[el.dataset.act]; if(f) f(el);}
+  else if(el.dataset&&el.dataset.lib){
+    var l=getLib(), id=el.dataset.id; l[id]=l[id]||{};
+    if(el.dataset.lib==="have") l[id].have=el.checked;
+    else{
+      l[id].opened=el.value;
+      if(el.value){l[id].have=true; var c=app.querySelector('[data-lib="have"][data-id="'+id+'"]'); if(c) c.checked=true;}
+    }
+    store.set("lib",l);
+    var fr=app.querySelector('[data-fresh="'+id+'"]'); if(fr) fr.textContent=freshLine(l[id]);
+  }
 });
 
 /* ---------- footer + routing ---------- */
 function renderFoot(){
   foot.innerHTML=
-    '<p class="links"><a href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener">Instagram: @topnotesociety</a><a href="#about">About us</a><a href="#notes">My scent notes</a></p>'+
+    '<p class="links"><a href="'+INSTAGRAM_URL+'" target="_blank" rel="noopener">Instagram: @topnotesociety</a><a href="#about">About us</a><a href="#theory">The theory</a><a href="#notes">My scent notes</a></p>'+
     '<p>No workbook yet? <a href="'+WORKBOOK_URL+'" target="_blank" rel="noopener">Get Module 1: Citrus, free</a>.</p>'+
     '<p>Your answers are saved on this device only. We never see them.</p>'+
     '<button class="link" data-act="clear">Clear my answers</button>';
 }
-var views={start:viewStart,own:viewOwn,pairs:viewPairs,scale:viewScale,words:viewWords,blind:viewBlind,translate:viewTranslate,review:viewReview,notes:viewNotes,about:viewAbout};
+var views={start:viewStart,own:viewOwn,pairs:viewPairs,scale:viewScale,words:viewWords,blind:viewBlind,translate:viewTranslate,review:viewReview,notes:viewNotes,about:viewAbout,shelf:viewShelf,library:viewLibrary,fade:viewFade,kitchen:viewKitchen,theory:viewTheory,labels:viewLabels};
 var cur="start";
 function show(name){cur=views[name]?name:"start";views[cur]();}
 function go(name){
