@@ -467,7 +467,7 @@ function dueBanner(){
 function viewStart(){
   var strips=stripsHtml("a"), done=stepsDone();
   var items=[
-    ["own","Step 1","Your own words first","Write what each oil reminds you of. No wrong answers.",statusOwn()],
+    ["own","Step 1","Your own words first","Write what each oil reminds you of. No wrong answers. Step 2, how professionals say it, opens inside once all five are written.",statusOwn()],
     ["pairs","Step 3","Minimal pairs","Two neighbours side by side. Which one is it?",statusPairs()],
     ["scale","Step 4","Intensity scale","Rate each oil from 1 to 5 on six fixed axes.",statusScale()],
     ["words","Step 5","Word bank","Fourteen words. Match each one to its meaning.",statusWords()],
@@ -617,7 +617,7 @@ function viewPairs(){
   }
   app.innerHTML=head("Step 3","Minimal pairs")+
     '<p class="progress">Question '+(P.i+1)+' of '+QUESTIONS.length+' · '+A.name+' or '+B.name.toLowerCase()+'</p>'+
-    '<p class="quiet">'+p.how+' Then answer.</p>'+
+    '<p class="quiet">Recall what you noticed in this pair, then answer.</p>'+
     '<p class="prompt">'+q.t+'</p>'+
     '<div class="opts">'+b(A)+b(B)+'</div>'+fb;
 }
@@ -851,7 +851,7 @@ function viewAbout(){
 var SHOP=[
   {n:"Lemon essential oil, 30 ml",lat:"Citrus limon",tip:"Cold-pressed is best",p:"$7",u:"https://www.iherb.com/pr/now-foods-essential-oils-lemon-1-fl-oz-30-ml/928"},
   {n:"Lime essential oil, 30 ml",lat:"Citrus aurantifolia",tip:"Cold-pressed smells of fresh lime; distilled, of lime sweets",p:"$12",u:"https://www.iherb.com/pr/now-foods-essential-oils-lime-1-fl-oz-30-ml/930"},
-  {n:"Bergamot essential oil, 30 ml",lat:"Citrus bergamia",tip:"“FCF” or “bergapten-free” is gentler if it ever touches skin",p:"$14",u:"https://www.iherb.com/pr/now-foods-essential-oils-bergamot-1-fl-oz-30-ml/913"},
+  {n:"Bergamot essential oil, 30 ml",lat:"Citrus bergamia",tip:"“FCF” or “bergapten-free” bottles work too. Smell from paper only: no oil goes on skin, FCF included",p:"$14",u:"https://www.iherb.com/pr/now-foods-essential-oils-bergamot-1-fl-oz-30-ml/913"},
   {n:"Sweet orange essential oil, 30 ml",lat:"Citrus sinensis",tip:"Not “bitter orange”: that is a different oil",p:"$5",u:"https://www.iherb.com/pr/now-foods-essential-oils-orange-1-fl-oz-30-ml/953"},
   {n:"Grapefruit essential oil, 30 ml",lat:"Citrus paradisi",tip:"Pink or white both work",p:"$8",u:"https://www.iherb.com/pr/now-foods-essential-oils-grapefruit-1-fl-oz-30-ml/934"}
 ];
